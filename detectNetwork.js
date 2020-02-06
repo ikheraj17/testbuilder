@@ -11,11 +11,24 @@ var detectNetwork = function(cardNumber) {
   // Note: `cardNumber` will always be a string
   var length = cardNumber.length;
   // The Diner's Club network always starts with a 38 or 39 and is 14 digits long
+
   //-------------------------------prefix with length of 2 --------------------------------------------------------
   var twoNums = '';
   for (var i = 0; i < 2; i ++){
    twoNums = twoNums + cardNumber[i];
   }
+ //---------------------------------prefix with length of 3 ----------------------------------------------
+ var threeNums = '';
+ for (var i =0; i < 3; i ++){
+   threeNums = threeNums + cardNumber[i];
+ }
+
+  //------------------------------- prefix with length of 4 ------------------------------------------------
+  var fourNums = '';
+  for (var i =0 ; i < 4; i ++){
+    fourNums = fourNums + cardNumber[i];
+  }
+
 //-------------------------------------Diner's Club -----------------------------------------------------------------
 
   if((twoNums === "38" || twoNums === "39") && (cardNumber.length === 14)){
@@ -39,6 +52,11 @@ var detectNetwork = function(cardNumber) {
     return "MasterCard";
   }
 
+  //----------------------------------- Discover --------------------------------------------------------
+
+  if(((fourNums === "6011" || threeNums > "643" && threeNums < "650" || twoNums === "65")) && ((length === 16 || length === 19))){
+    return "Discover";
+  } 
 };
 
 
