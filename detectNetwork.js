@@ -11,14 +11,19 @@ var detectNetwork = function(cardNumber) {
   // Note: `cardNumber` will always be a string
   var length = cardNumber.length;
   // The Diner's Club network always starts with a 38 or 39 and is 14 digits long
+  //-------------------------------prefix with length of 2 --------------------------------------------------------
   var twoNums = '';
   for (var i = 0; i < 2; i ++){
    twoNums = twoNums + cardNumber[i];
   }
+//-------------------------------------Diner's Club -----------------------------------------------------------------
+
   if((twoNums === "38" || twoNums === "39") && (cardNumber.length === 14)){
     return "Diner's Club";
-  }
+  }  
   // The American Express network always starts with a 34 or 37 and is 15 digits long
+  //---------------------------------- AMEX ----------------------------------------------------------------------------
+
   if((twoNums === "34" || twoNums === "37") && (cardNumber.length === 15)){
     return "American Express";
   }
