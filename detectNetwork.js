@@ -29,6 +29,13 @@ var detectNetwork = function(cardNumber) {
     fourNums = fourNums + cardNumber[i];
   }
 
+  //-------------------------------- prefix with length of 6 -----------------------------------------------------
+
+  var sixNums = '';
+  for (var i =0 ; i < 6; i ++){
+    sixNums = sixNums + cardNumber[i];
+  }
+
 //-------------------------------------Diner's Club -----------------------------------------------------------------
 
   if((twoNums === "38" || twoNums === "39") && (cardNumber.length === 14)){
@@ -42,7 +49,7 @@ var detectNetwork = function(cardNumber) {
   }
   // ---------------------------- VISA --------------------------------------------------------------------------------
   
-  if((cardNumber[0] === "4") && (length === 13 || length === 16 || length === 19)){
+  if((cardNumber[0] === "4" && (fourNums !== "4903" || fourNums !== "4905" || fourNums !== "4911" || fourNums !== "4936" || fourNums !== "6333" || fourNums !== "6759")) && (length === 13 || length === 16 || length === 19)){
     return "Visa";
   }
 
@@ -64,9 +71,21 @@ var detectNetwork = function(cardNumber) {
     return "Maestro";
   }
 
+  //-------------------------------------------China UnionPay --------------------------------------------------------------------------
+  if(((sixNums >= "622126" && sixNums <= "622925") || (threeNums >= "624" && threeNums <= "626") || (fourNums >= "6282" && fourNums <= "6288")) && (length >=16 && length <= 19)){
+    return "China UnionPay";
+  }
 
-
+  //------------------------------------------------Switch ---------------------------------------------------------------------------------
+  if((fourNums === '4903' || fourNums === '4905' || fourNums === '4911' || fourNums === '4936' || fourNums === '6333' || fourNums === '6759' || sixNums === "564182" || sixNums === "633110") && (length === 16 || length === 18 || length === 19)){
+    return "Switch";
+  }
 };
+
+
+
+
+
 
 
 

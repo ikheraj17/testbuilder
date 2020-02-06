@@ -107,15 +107,15 @@ describe('MasterCard', function() {
   var expect = chai.expect;
  
   it('has a prefix of 51 and a length of 16', function() {
-    expect(detectNetwork('5112345678901234')).to.equal('MasterCard');
+    detectNetwork('5112345678901234').should.equal('MasterCard');
   });
  
   it('has a prefix of 52 and a length of 16', function() {
-    expect(detectNetwork('5212345678901234')).to.equal('MasterCard');
+    detectNetwork('5212345678901234').should.equal('MasterCard');
   });
  
   it('has a prefix of 53 and a length of 17', function() {
-    expect(detectNetwork('5312345678901234')).to.equal('MasterCard');
+    detectNetwork('5312345678901234').should.equal('MasterCard');
   });
  
 
@@ -293,6 +293,16 @@ describe('Maestro', function() {
   it('has a prefix of 6304 and a length of 19', function () {
     detectNetwork('6304123333334444444').should.equal("Maestro");
   });
- 
-});
 
+});
+ //----------------------------------------China UnionPay -----------------------------------------------------
+ describe("China UnionPay", function(){
+  for (var prefix = "622126"; prefix < "622926"; prefix ++){
+    var actual = prefix + '1234567890';
+    function(actual, prefix){
+      it('has a prefix of ' + prefix + ' and a length of 16', function() {
+        detectNetwork(actual).should.equal("China UnionPay");
+      });
+    };
+  };
+ });
