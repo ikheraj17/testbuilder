@@ -49,7 +49,7 @@ var detectNetwork = function(cardNumber) {
   }
   // ---------------------------- VISA --------------------------------------------------------------------------------
   
-  if((cardNumber[0] === "4" && (fourNums !== "4903" || fourNums !== "4905" || fourNums !== "4911" || fourNums !== "4936" || fourNums !== "6333" || fourNums !== "6759")) && (length === 13 || length === 16 || length === 19)){
+  if((fourNums !== "4903" && fourNums !== "4905" && fourNums !== "4911" && fourNums !== "4936" && fourNums !== "6333" && fourNums !== "6759")  && (cardNumber[0] === "4") && (length === 13 || length === 16 || length === 19)){
     return "Visa";
   }
 

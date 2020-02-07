@@ -139,56 +139,34 @@ describe('MasterCard', function() {
 });
 
 describe('Discover', function() {
-  // Tests without a function will be marked as "pending" and not run
-  // Implement these tests (and others) and make them pass!
-  it('has a prefix of 6011 and a length of 16', function() {
-    detectNetwork('6011123456789012').should.equal("Discover");
+  for (var prefix = 644; prefix <= 649; prefix++) {
+ 
+    (function(prefix) {
+   
+      it('has a prefix of ' + prefix + ' and a length of 16', function() {
+       detectNetwork(parseInt(prefix) + '1234567891345').should.equal('Discover');
+      });
+       it('has a prefix of ' + prefix + ' and a length of 19', function() {
+       detectNetwork(parseInt(prefix) + '1234567891234456').should.equal('Discover');
+      });
+   
+    })(prefix)
+  }
+
+  it("has a prefix of 65 and a length of 16", function (){
+    detectNetwork("6556473825362563").should.equal("Discover");
   });
-  it('has a prefix of 6011 and a length of 19', function () {
-    detectNetwork('6011123456789123456').should.equal("Discover");
+
+  it("has a prefix of 65 and a length of 19", function (){
+    detectNetwork("6556473825362563456").should.equal("Discover");
   });
-  it('has a prefix of 644 and a length of 16', function() {
-    detectNetwork('6441123456789012').should.equal("Discover");
+
+   it("has a prefix of 6011 and a length of 16", function (){
+    detectNetwork("6011263546372634").should.equal("Discover");
   });
-  it('has a prefix of 644 and a length of 19', function () {
-    detectNetwork('6441123456789123456').should.equal("Discover");
-  });
-  it('has a prefix of 645 and a length of 16', function() {
-    detectNetwork('6451123456789012').should.equal("Discover");
-  });
-  it('has a prefix of 645 and a length of 19', function () {
-    detectNetwork('6451123456789123456').should.equal("Discover");
-  });
-  it('has a prefix of 646 and a length of 16', function() {
-    detectNetwork('6461123456789012').should.equal("Discover");
-  });
-  it('has a prefix of 646 and a length of 19', function () {
-    detectNetwork('6461123456789123456').should.equal("Discover");
-  });
-  it('has a prefix of 647 and a length of 16', function() {
-    detectNetwork('6471123456789012').should.equal("Discover");
-  });
-  it('has a prefix of 647 and a length of 19', function () {
-    detectNetwork('6471123456789123456').should.equal("Discover");
-  });
-  it('has a prefix of 648 and a length of 16', function() {
-    detectNetwork('6481123456789012').should.equal("Discover");
-  });
-  it('has a prefix of 648 and a length of 19', function () {
-    detectNetwork('6481123456789123456').should.equal("Discover");
-  });
-  it('has a prefix of 649 and a length of 16', function() {
-    detectNetwork('6491123456789012').should.equal("Discover");
-  });
-  it('has a prefix of 649 and a length of 19', function () {
-    detectNetwork('6491123456789123456').should.equal("Discover");
-  });
-   //------------------------------------------------prefix of 65-----------------------------------
-   it('has a prefix of 65 and a length of 16', function() {
-    detectNetwork('6591123456789012').should.equal("Discover");
-  });
-  it('has a prefix of 65 and a length of 19', function () {
-    detectNetwork('6591123456789123456').should.equal("Discover");
+
+   it("has a prefix of 6011 and a length of 19", function (){
+    detectNetwork("6011263546372633334").should.equal("Discover");
   });
 });
 
@@ -299,108 +277,108 @@ describe('Maestro', function() {
  describe("China UnionPay", function(){
   for (var prefix = "622126"; prefix < "622926"; prefix ++){
     var card = prefix + '1234567890';
-    function(card, prefix){
+    (function(card, prefix){
       it('has a prefix of ' + prefix + ' and a length of 16', function() {
         detectNetwork(card).should.equal("China UnionPay");
       });
-    };
+    })(card, prefix);
   };
 
   for (var prefix = "622126"; prefix < "622926"; prefix ++){
     var card = prefix + '12345676890';
-    function(card, prefix){
+    (function(card, prefix){
       it('has a prefix of ' + prefix + ' and a length of 17', function() {
         detectNetwork(card).should.equal("China UnionPay");
       });
-    };
+    })(card, prefix);
   };
 
   for (var prefix = "622126"; prefix < "622926"; prefix ++){
     var card = prefix + '123456667890';
-    function(card, prefix){
+    (function(card, prefix){
       it('has a prefix of ' + prefix + ' and a length of 18', function() {
         detectNetwork(card).should.equal("China UnionPay");
       });
-    };
+    })(card,prefix);
   };
 
   for (var prefix = "622126"; prefix < "622926"; prefix ++){
     var card = prefix + '1234567677890';
-    function(card, prefix){
+    (function(card, prefix){
       it('has a prefix of ' + prefix + ' and a length of 19', function() {
         detectNetwork(card).should.equal("China UnionPay");
       });
-    };
+    })(card,prefix);
   };
 
   for (var prefix = "624"; prefix < "627"; prefix ++){
     var card = prefix + "2345678912345";
-    function(card, prefix){
+    (function(card, prefix){
       it('has a prefix of ' + prefix + ' and a length of 16', function(){
         detectNetwork(card).should.equal("China UnionPay");
       });
-    };
+    })(card,prefix);
   };
 
   for (var prefix = "624"; prefix < "627"; prefix ++){
     var card = prefix + "23456789123745";
-    function(card, prefix){
+    (function(card, prefix){
       it('has a prefix of ' + prefix + ' and a length of 17', function(){
         detectNetwork(card).should.equal("China UnionPay");
       });
-    };
+    })(card,prefix);
   };
 
   for (var prefix = "624"; prefix < "627"; prefix ++){
     var card = prefix + "234567891277345";
-    function(card, prefix){
+    (function(card, prefix){
       it('has a prefix of ' + prefix + ' and a length of 18', function(){
         detectNetwork(card).should.equal("China UnionPay");
       });
-    };
+    })(card,prefix);
   };
 
   for (var prefix = "624"; prefix < "627"; prefix ++){
     var card = prefix + "2345678977123456";
-    function(card, prefix){
+    (function(card, prefix){
       it('has a prefix of ' + prefix + ' and a length of 19', function(){
         detectNetwork(card).should.equal("China UnionPay");
       });
-    };
+    })(card,prefix);
   };
 
   for (var prefix = "6282"; prefix <= "6288"; prefix ++){
     var card = prefix + '123456789123';
-    function(card, prefix){
+    (function(card, prefix){
       it('has a prefix of ' + prefix + ' and a length of 16', function (){
         detectNetwork(card).should.equal("China UnionPay");
       });
-    };
+    })(card,prefix);
   };
 
   for (var prefix = "6282"; prefix <= "6288"; prefix ++){
     var card = prefix + '1234567891237';
-    function(card, prefix){
+    (function(card, prefix){
       it('has a prefix of ' + prefix + ' and a length of 17', function (){
         detectNetwork(card).should.equal("China UnionPay");
       });
-    };
+    })(card,prefix);
   };
   for (var prefix = "6282"; prefix <= "6288"; prefix ++){
     var card = prefix + '12345678977123';
-    function(card, prefix){
+    (function(card, prefix){
       it('has a prefix of ' + prefix + ' and a length of 18', function (){
         detectNetwork(card).should.equal("China UnionPay");
       });
-    };
+    })(card,prefix);
   };
   for (var prefix = "6282"; prefix <= "6288"; prefix ++){
     var card = prefix + '123456789777123';
-    function(card, prefix){
+    (function(card, prefix){
       it('has a prefix of ' + prefix + ' and a length of 19', function (){
         detectNetwork(card).should.equal("China UnionPay");
       });
-    };
+    })(card,prefix);
   };
  });
 //------------------------------------------------------------------Tests for Switch ----------------------------------------------//
